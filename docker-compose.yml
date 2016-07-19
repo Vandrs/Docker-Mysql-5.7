@@ -1,0 +1,16 @@
+version: '2'
+services:
+    mysql:
+        container_name: mysql-5-7
+        build: ./server
+        environment:
+            - MYSQL_ROOT_PASSWORD=local
+        volumes_from:
+            - volume_data
+        volumes:
+            - ./log/:/var/log/mysql
+
+    volume_data:
+        build: ./volume
+        volumes:
+            - ./volume/data:/var/data
