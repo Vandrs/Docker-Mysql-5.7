@@ -14,3 +14,4 @@ services:
         build: ./volume
         volumes:
             - ./volume/data:/var/data
+            - ./mysql:/var/lib/mysql
