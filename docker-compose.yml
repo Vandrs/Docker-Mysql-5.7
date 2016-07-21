@@ -9,9 +9,19 @@ services:
             - volume_data
         volumes:
             - ./log/:/var/log/mysql
+        networks:
+            mysql_net: 
+                ipv4_address: 172.26.0.101
 
     volume_data:
         build: ./volume
         volumes:
             - ./volume/data:/var/data
             - ./mysql:/var/lib/mysql
+
+networks:
+    mysql_net:
+        driver: bridge
+        ipam:
+          config:
+          - subnet: 172.26.0.0/24
